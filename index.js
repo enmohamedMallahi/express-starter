@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const logger = require('./middlewares/logger');
+const { addUser, getUsers } = require('./models/users.js');
 const port = 3000;
 
 // built-in middleware to handle urlecoded data - forms data
@@ -18,6 +19,18 @@ app.use(logger);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
+
+app.post('/signup', (req, res) => {
+  console.log('User created successfully');
+  addUser(req.body);
+  res.send('User created successfully ');
+});
+
+app.get('/login', async (req, res) => {
+  const users = await getUsers();
+  let userId = 'f8ab2bfa-7048-404f-a916-778c3ab3fb2d';
+  res.send(users.filter((user) => user.id == userId)[0]);
 });
 
 app.get('/about', (req, res) => {
