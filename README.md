@@ -1,3 +1,3 @@
-# node-iy4zhy
+# Express starter
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/node-iy4zhy)
+A simple Express.js starter code for future projects.
