@@ -22,20 +22,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/root'));
-app.use('/subdir', require('./routes/subdir'));
-app.use('/api/users', require('./routes/api/users'));
-
-app.post('/signup', (req, res) => {
-  console.log('User created successfully');
-  addUser(req.body);
-  res.send('User created successfully ');
-});
-
-app.get('/login', async (req, res) => {
-  const users = await getUsers();
-  let userId = 'f8ab2bfa-7048-404f-a916-778c3ab3fb2d';
-  res.send(users.filter((user) => user.id == userId)[0]);
-});
+app.use('/api/todos', require('./routes/api/todos'));
+app.use('/register', require('./routes/register'));
 
 // 404 handler
 app.get('/*', (req, res) => {
