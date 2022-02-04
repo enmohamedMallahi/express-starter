@@ -3,7 +3,7 @@ const fs = require('fs');
 const fsPromises = require('fs').promises;
 const { v4: uuid } = require('uuid');
 
-const p = path.join(__dirname, '..', 'data', 'users.txt');
+const p = path.join(__dirname, '..', 'data', 'users.json');
 
 const addUser = async (newUser) => {
   const users = await getUsers();
